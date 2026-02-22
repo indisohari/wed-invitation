@@ -150,7 +150,29 @@
       </div>
     </section>
 
+    
+    <section id="rsvpSection" class="fade-in" style="background: #fff; padding-bottom: 80px;">
+      <span class="section-label-ko" style="margin-bottom: 5px;">정성껏 준비하겠습니다</span>
+      <h2 class="font-serif" style="font-size: 19px; margin-bottom: 40px; font-weight: 700; color: #1a1a1a;">참석 정보를 알려주세요</h2>
+      <div class="rsvp-container">
+        <div class="rsvp-input-group"><label class="rsvp-label">성함</label><input id="name" placeholder="성함을 입력해주세요" maxlength="20" autocomplete="name"></div>
+        <div class="rsvp-input-group"><label class="rsvp-label">휴대폰 번호</label><input id="phone" type="tel" placeholder="010-0000-0000" maxlength="13" autocomplete="tel"></div>
+        <div class="rsvp-input-group"><label class="rsvp-label">참석 인원 (본인 포함)</label>
+          <select id="guestCount" style="color: #666;">
+            <option value="" disabled selected>인원 선택</option>
+            <option value="1">1명 (혼자 참석합니다)</option><option value="2">2명 (동반인 1명)</option><option value="3">3명 (동반인 2명)</option>
+            <option value="4">4명 (동반인 3명)</option><option value="5">5명 (동반인 4명)</option><option value="6">6명 (동반인 5명)</option>
+            <option value="7">7명 (동반인 6명)</option><option value="8">8명 (동반인 7명)</option><option value="9">9명 (동반인 8명)</option><option value="10">10명 이상</option>
+          </select>
+        </div>
+        <button id="submitBtn" class="btn-submit" onclick="submitRsvp()">참석 소식 전하기</button>
+  <p class="privacy-notice">
+          * 전달하신 정보는 식사 준비를 위해 사용되며, 예식 종료 후 파기합니다.
+        </p>
+      </div>
+    </section>
 
+    
     <section class="detail-info-section fade-in" style="background: #fafafa; border-top: 1px solid #eee;">
       <span class="section-label" style="text-align: center;">Location Info</span>
       
@@ -214,28 +236,9 @@
       </div>
     </section>
 
-    
-    <section id="rsvpSection" class="fade-in" style="background: #fff; padding-bottom: 80px;">
-      <span class="section-label-ko" style="margin-bottom: 5px;">정성껏 준비하겠습니다</span>
-      <h2 class="font-serif" style="font-size: 19px; margin-bottom: 40px; font-weight: 700; color: #1a1a1a;">참석 정보를 알려주세요</h2>
-      <div class="rsvp-container">
-        <div class="rsvp-input-group"><label class="rsvp-label">성함</label><input id="name" placeholder="성함을 입력해주세요" maxlength="20" autocomplete="name"></div>
-        <div class="rsvp-input-group"><label class="rsvp-label">휴대폰 번호</label><input id="phone" type="tel" placeholder="010-0000-0000" maxlength="13" autocomplete="tel"></div>
-        <div class="rsvp-input-group"><label class="rsvp-label">참석 인원 (본인 포함)</label>
-          <select id="guestCount" style="color: #666;">
-            <option value="" disabled selected>인원 선택</option>
-            <option value="1">1명 (혼자 참석합니다)</option><option value="2">2명 (동반인 1명)</option><option value="3">3명 (동반인 2명)</option>
-            <option value="4">4명 (동반인 3명)</option><option value="5">5명 (동반인 4명)</option><option value="6">6명 (동반인 5명)</option>
-            <option value="7">7명 (동반인 6명)</option><option value="8">8명 (동반인 7명)</option><option value="9">9명 (동반인 8명)</option><option value="10">10명 이상</option>
-          </select>
-        </div>
-        <button id="submitBtn" class="btn-submit" onclick="submitRsvp()">참석 소식 전하기</button>
-  <p class="privacy-notice">
-          * 전달하신 정보는 식사 준비를 위해 사용되며, 예식 종료 후 파기합니다.
-        </p>
-      </div>
-    </section>
 
+
+    
     <section class="poem-section fade-in" style="background: #fafafa;">
       <span class="section-label">Invitation</span>
       <div class="poem-wrap font-serif">
