@@ -41,7 +41,11 @@
     
     .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
-    @media (prefers-reduced-motion: reduce) { .fade-in { transition: none; opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { 
+      .fade-in { transition: none; opacity: 1; transform: none; } 
+      /* 모션 저감 설정자를 위한 애니메이션 무효화 방어 */
+      .hero-text-area, .main-photo-frame, .parents-area { animation: none !important; opacity: 1 !important; transform: none !important; }
+    }
 
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid rgba(140, 91, 91, 0.5); outline-offset: 2px; }
 
@@ -53,7 +57,8 @@
     .hero { padding: 0 0 50px; background: #fff; }
     .hero-text-area { padding-top: 80px; padding-bottom: 40px; animation: fadeUpLoad 1.2s ease-out forwards; opacity: 0; }
     .date-text { font-size: 15px; letter-spacing: 4px; color: var(--accent); margin-bottom: 18px; font-weight: 700; }
-    /* [복구] 고정 픽셀로 타이포그래피 안정화 */
+    
+    /* [복구] 고정 픽셀로 타이포그래피 안정화 (반응형 폰트 삭제) */
     .names { font-size: 27px; margin-bottom: 12px; letter-spacing: 1px; line-height: 1.4; color: #111; font-weight: 400; }    
     
     .main-photo-frame { width: 100%; margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; animation: fadeUpLoad 1.2s ease-out 0.3s forwards; opacity: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.05); cursor: zoom-in; }
@@ -68,7 +73,7 @@
     .me { font-weight: 700; font-size: 17.5px; color: #111; letter-spacing: 1px;}
 
     /* 2 & 3. INFO & LOCATION */
-    .info-section { background: #fff; padding-top: 60px; padding-bottom: 30px; }
+    .info-section { background: #fff; padding-top: 60px; padding-bottom: 50px; }
     .info-group { margin-bottom: 40px; }
     .info-title { font-size: 21px; font-weight: 700; margin-bottom: 12px; color: #111; letter-spacing: 0.5px; }
     .info-desc { font-size: 15.5px; color: var(--text-sub); font-weight: 400; margin-bottom: 20px; line-height: 1.6; word-break: keep-all; } 
@@ -80,7 +85,7 @@
     
     .divider-dot { width: 4px; height: 4px; background: #ccc; border-radius: 50%; margin: 30px auto 45px; }
 
-    .detail-info-section { background: #fff; padding-top: 0; padding-bottom: 70px; }
+.detail-info-section { background: #fff; padding-top: 30px; padding-bottom: 50px; }
     .map-img-wrap { margin-bottom: 40px; text-align: center; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #f0f0f0; }
     
     .detail-group { text-align: left; background: #fafafa; padding: 25px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #f2f2f2; }
@@ -100,7 +105,7 @@
     .notice-strong { color: #b43a3a; font-weight: 600; }
 
     /* 4. RSVP */
-    .rsvp-wrap-section { background: var(--section-gray); padding-top: 70px; padding-bottom: 70px; }
+.rsvp-wrap-section { background: var(--section-gray); padding-top: 60px; padding-bottom: 60px; }
     .rsvp-container { background: #fff; padding: 45px 25px; border: 1px solid #eaeaea; margin-top: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
     .rsvp-input-group { margin-bottom: 30px; text-align: left; }
     .rsvp-label { font-size: 13.5px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 10px; }
@@ -125,7 +130,7 @@
     .privacy-notice { font-size: 12.5px; color: #888; margin-top: 20px; line-height: 1.5; text-align: center; word-break: keep-all; }
 
     /* 5. INVITATION */
-    .poem-section { padding-top: 80px; padding-bottom: 60px; background: #fff; }
+.poem-section { padding-top: 60px; padding-bottom: 50px; background: #fff; }
     .poem-wrap {
       white-space: pre-line;
       line-height: 2.1;
@@ -138,7 +143,8 @@
     }
 
     /* 6. GALLERY */
-    .gallery-section { padding-top: 40px; padding-bottom: 80px; background: #fff; }
+.gallery-section { padding-top: 40px; padding-bottom: 60px; background: #fff; }
+.gallery-section h2 { margin-bottom: 25px !important; }
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: 8px; overflow: hidden; }
     .gallery-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; cursor: zoom-in; display: block; transition: opacity 0.3s; }
     .gallery-img:active { opacity: 0.7; }
@@ -147,7 +153,7 @@
     .btn-gallery-more:active { transform: scale(0.97); background: #f9f9f9; }
 
     /* 7. ACCOUNT & SHARE */
-    .account-wrap-section { background: var(--section-gray); padding-top: 80px; padding-bottom: 40px; }
+.account-wrap-section { background: var(--section-gray); padding-top: 60px; padding-bottom: 40px; }
     .acc-header-title { font-family: 'Nanum Myeongjo'; font-size: 21px; margin-bottom: 35px; color: #111; font-weight: 700; line-height: 1.5; }
     
     .account-card { background: #fff; border: 1px solid #eaeaea; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.01); max-width: 450px; margin: 0 auto; overflow: hidden; }
@@ -177,6 +183,12 @@
     
     .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(45px + env(safe-area-inset-bottom)); background: rgba(30,30,30,0.95); color: #fff; padding: 15px 22px; border-radius: 30px; font-size: 14.5px; z-index: 3000; font-weight: 400; width: auto; max-width: calc(100vw - 40px); word-break: keep-all; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: -15px; }
     .toast.show { opacity: 1; margin-bottom: 0; }
+
+    /* 🚨 [복구완료] 마법의 스르륵 애니메이션 부활! */
+    @keyframes fadeUpLoad {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    } 
   </style>
 </head>
 
@@ -187,7 +199,7 @@
       <div class="hero-text-area">
         <div class="date-text font-serif">2026 / 05 / 23</div>
         <div class="names font-serif">신동윤 <span style="font-size:16px; color:#ddd; vertical-align:middle; margin:0 8px;">&</span> 신지연</div>
-        <div style="font-size: 15px; color: #888; letter-spacing: 1.5px; margin-top: 15px;">결혼식에 초대합니다</div>
+        <div style="font-size: 15px; color: #666; letter-spacing: 1.5px; margin-top: 15px;">결혼식에 초대합니다</div>
       </div>
       <div class="main-photo-frame"><img src="main.jpg" alt="신동윤 신지연 웨딩 메인 사진" onclick="openModal(this.src)" class="main-photo"></div>
       <div class="parents-area">
@@ -285,11 +297,6 @@
           <p class="detail-desc" style="color: #333; font-weight: 500; font-size: 15.5px;">110B, 400, 405</p>
         </div>
 
-        <div class="bus-list" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
-          <p class="detail-desc" style="margin-bottom: 5px;"><b>🚌 서울중부기술교육원. 블루스퀘어 하차 (도보 12분)</b></p>
-          <span class="stop-badge">정류소 03160, 03161</span>
-          <p class="detail-desc" style="color: #333; font-weight: 500; font-size: 15.5px;">142, 144, 402, 420, 3011, 6211</p>
-        </div>
       </div>
 
       <div class="notice-box">
@@ -344,8 +351,9 @@
       </div>
     </section>
 
-    <section class="poem-section fade-in">
-      <span class="section-label-ko" style="margin-bottom: 30px;">이렇게 결혼합니다</span>
+<section class="poem-section fade-in">
+      <h2 class="font-serif" style="font-size: 22px; margin-bottom: 35px; font-weight: 700; color: #111;">이렇게 결혼합니다</h2>
+      
       <div class="poem-wrap font-serif">
 신중한 지연은 느긋합니다.
 빠릿한 동윤은 서두릅니다.
@@ -379,8 +387,9 @@
       </div>
     </section>
 
+
     <section class="gallery-section fade-in">
-      <span class="section-label-ko" style="margin-bottom: 10px;">웨딩 사진</span>
+      <span class="section-label-ko" style="margin-bottom: 10px;">웨딩 사진...</span>
       <h2 class="font-serif" style="font-size: 23px; margin-bottom: 25px; font-weight: 700; color: #111; line-height: 1.4;">한 번은 해도,<br>두 번은 못할 촬영</h2>
       
       <div class="gallery-grid">
@@ -564,7 +573,7 @@ function submitRsvp() {
     })
   })
   .then(function() {
-    toast("감사합니다! 참석 정보가 전송되었습니다 🤍");
+    toast("감사합니다! 참석 정보가 전송되었습니다");
     sideSelect.value = "";
     sideSelect.style.color = "#aaa";
     document.getElementById("name").value = "";
