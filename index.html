@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    :root { --bg-color: #ffffff; --text-main: #1a1a1a; --text-sub: #555; --accent: #8c5b5b; --line: #e0e0e0; }
+    :root { --bg-color: #ffffff; --text-main: #222222; --text-sub: #555555; --accent: #8c5b5b; --line: #e0e0e0; }
     
     /* [P0 개선] 기본 스크롤 사용 (overflow:hidden 삭제) -> 키보드 입력 오류 방지 */
     html, body { margin: 0; padding: 0; width: 100%; background: #f9f9f9; font-family: 'Noto Sans KR', sans-serif; color: var(--text-main); -webkit-font-smoothing: antialiased; }
@@ -23,8 +23,7 @@
     /* .scroll-wrapper 제거됨 -> body가 스크롤 담당 */
     .wrap { max-width: 500px; margin: 0 auto; background: #fff; padding-bottom: 80px; box-shadow: 0 0 30px rgba(0,0,0,0.02); min-height: 100vh; }
     
-    section { padding: 60px 25px; text-align: center; }
-    
+section { padding: 75px 25px; text-align: center; }    
     /* [P2 개선] 모션 저감 옵션 존중 (사용자가 애니메이션 껐을 경우 대비) */
     .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -33,44 +32,57 @@
     .font-serif { font-family: 'Nanum Myeongjo', serif; }
     .section-label { font-size: 11px; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; font-weight: 700; }
     .section-label-ko { font-size: 12px; color: var(--accent); letter-spacing: 0.5px; margin-bottom: 15px; display: block; font-weight: 700; }
-    .hero { padding: 0 0 50px; }
-    .hero-text-area { padding-top: 70px; padding-bottom: 40px; }
+    .hero { padding: 0 0 60px; }
+.hero-text-area { padding-top: 80px; padding-bottom: 45px; }
     .date-text { font-size: 15px; letter-spacing: 3px; color: var(--accent); margin-bottom: 20px; font-weight: 700; }
-    .names { font-size: 26px; margin-bottom: 10px; letter-spacing: 2px; line-height: 1.4; color: #111; }
+    .names { font-size: 26px; margin-bottom: 12px; letter-spacing: 2px; line-height: 1.4; color: #222; }
+.me { font-weight: 700; font-size: 17px; color: #222; letter-spacing: 1px;}
 
     .main-photo-frame { width: 100%; margin: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 8px; }
     .main-photo { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 65%; filter: brightness(1.05) contrast(1.02) sepia(0.08) saturate(0.9); transition: filter 0.3s ease; }
     
-    .parents-area { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 40px; padding: 0 10px; box-sizing: border-box; }
+    .parents-area { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 45px; padding: 0 10px; box-sizing: border-box; }
     .parent-row { flex: 1; text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
     .parent-row.bride { text-align: left; align-items: flex-start; }
     .p-names { font-weight: 400; color: #666; font-size: 13px; margin-bottom: 4px; }
     .relation { color: #999; font-size: 11px; margin-left: 4px; }
     .parent-row.bride .relation { margin-left: 4px; } 
-    .me { font-weight: 700; font-size: 17px; color: #111; letter-spacing: 1px;}
+    
     .poem-section { padding-top: 50px; }
-    .poem-wrap { white-space: pre-line; line-height: 2.0; font-size: 15px; color: #333; word-break: keep-all; }
+    .poem-wrap { white-space: pre-line; line-height: 2.1; font-size: 15px; color: #444; word-break: keep-all; font-weight: 400; letter-spacing: 0.2px; }
     .info-section { background: #fafafa; padding: 50px 25px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
     .info-group { margin-bottom: 30px; }
     .info-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #222; letter-spacing: 0.5px; }
     .info-desc { font-size: 14px; color: #666; font-weight: 300; margin-bottom: 15px; }
     .btn-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 380px; margin: 0 auto; }
     .btn-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; max-width: 380px; margin: 0 auto; }
-    .btn { padding: 12px 0; border-radius: 4px; border: 1px solid #ddd; background: #fff; font-size: 12px; color: #333; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; transition: all 0.2s; font-weight: 500; font-family: 'Noto Sans KR'; }
+    .btn { padding: 13px 0; border-radius: 6px; border: 1px solid #eaeaea; background: #fdfdfd; font-size: 12px; color: #444; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; transition: all 0.2s; font-weight: 500; font-family: 'Noto Sans KR'; }
+.btn svg { width: 17px; height: 17px; fill: none !important; stroke: #444; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; vertical-align: middle; margin-right: 2px; }
+    
     .btn:active { transform: scale(0.98); background: #f9f9f9; }
-    .btn svg { width: 17px; height: 17px; fill: none !important; stroke: #222; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; vertical-align: middle; margin-right: 2px; }
+
     .btn svg path, .btn svg rect, .btn svg polyline, .btn svg line { fill: none !important; stroke: inherit; }
     .divider-line { width: 100%; height: 1px; background: #eee; margin: 30px 0; }
     
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
     .gallery-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; cursor: pointer; display: block; filter: brightness(1.05) contrast(1.02) sepia(0.08) saturate(0.9); }
     
-    .rsvp-container { background: #fdfdfd; padding: 40px 25px; border: 1px solid #f0f0f0; margin-top: 10px; }
+    .rsvp-container { background: #fdfdfd; padding: 45px 25px; border: 1px solid #f0f0f0; margin-top: 15px; border-radius: 8px; }
     .rsvp-input-group { margin-bottom: 30px; text-align: left; }
     .rsvp-label { font-size: 12px; color: var(--accent); font-weight: 700; display: block; margin-bottom: 8px; }
     
     /* [P2 개선] 입력 필드 스타일 개선 (배경색 추가로 인식률 높임) */
     input, select { width: 100%; padding: 12px 5px; border: none; border-bottom: 1px solid #ddd; background: transparent; font-size: 16px; border-radius: 0; outline: none; font-family: 'Noto Sans KR'; color: #333; -webkit-appearance: none; }
+    /* [NEW] 참석 인원 선택창 화살표 고급화 */
+select#guestCount {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 5px center;
+  background-size: 14px;
+  padding-right: 25px;
+}
+    
     input:focus, select:focus { border-bottom-color: var(--accent); }
     
     .btn-submit { width: 100%; padding: 18px; background: #222; color: #fff; border: none; border-radius: 4px; font-size: 15px; font-weight: 500; margin-top: 10px; cursor: pointer; letter-spacing: 1px; }
@@ -95,6 +107,11 @@
     .acc-info { font-size: 14px; color: #444; }
     .acc-info b { margin-right: 6px; color: #000; font-size: 15px; }
     .btn-copy { padding: 6px 14px; border: 1px solid #ddd; background: #fff; font-size: 11px; border-radius: 30px; cursor: pointer; color: #666; }
+
+    .share-section { padding: 10px 25px 50px; text-align: center; } /* 가운데 정렬 및 하단 여백 추가 */
+.btn-share { width: 100%; max-width: 380px; margin: 0 auto; padding: 16px 0; background: #333; color: #fff; border: none; border-radius: 30px; font-size: 14.5px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; letter-spacing: 0.5px; box-shadow: 0 4px 14px rgba(0,0,0,0.12); transition: transform 0.2s, box-shadow 0.2s; }
+.btn-share:active { transform: translateY(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.btn-share svg { width: 17px; height: 17px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     
     /* [P1 개선] 모달 및 토스트 UX */
     .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
@@ -104,10 +121,23 @@
     
     /* [P2 개선] 토스트가 홈 인디케이터에 가려지지 않게 처리 */
     /* [개선] 토스트 알림 위치 상향 조정 및 시인성 개선 */
-.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(45px + env(safe-area-inset-bottom)); background: rgba(0,0,0,0.85); color: #fff; padding: 14px 28px; border-radius: 30px; font-size: 13.5px; display: none; z-index: 3000; font-weight: 400; width: max-content; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-
+/* [개선] 부드럽게 올라오는 토스트 알림 */
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(45px + env(safe-area-inset-bottom)); background: rgba(0,0,0,0.85); color: #fff; padding: 14px 28px; border-radius: 30px; font-size: 13.5px; z-index: 3000; font-weight: 400; width: max-content; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; pointer-events: none; transition: all 0.3s ease; margin-bottom: -10px; }
+.toast.show { opacity: 1; margin-bottom: 0; }
+    
     /* [P1 개선] 흑백 필터 로직 제거 (Active UX 이슈 방지). 대신 CSS 필터 상시 적용 */
     /* .main-photo, .gallery-img { filter: ... } 는 위쪽 정의 유지 */
+    
+   /* [NEW] 첫 화면 스르륵 등장 애니메이션 */
+.hero-text-area { animation: fadeUpLoad 1.2s ease-out forwards; opacity: 0; }
+.main-photo-frame { animation: fadeUpLoad 1.2s ease-out 0.3s forwards; opacity: 0; }
+.parents-area { animation: fadeUpLoad 1.2s ease-out 0.6s forwards; opacity: 0; }
+
+@keyframes fadeUpLoad {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+} 
+    
   </style>
 </head>
 
@@ -355,11 +385,13 @@
       e.target.value = result;
     });
 
-    function toast(msg) {
-      var el = document.getElementById("toast");
-      el.textContent = msg; el.style.display = "block";
-      setTimeout(function () { el.style.display = "none"; }, 2000);
-    }
+// [개선] 토스트 애니메이션 자바스크립트
+function toast(msg) {
+  var el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(function () { el.classList.remove("show"); }, 2000);
+}
 
    // [개선] 통합된 텍스트 복사 함수
 function copyToClipboard(txt, msg) {
