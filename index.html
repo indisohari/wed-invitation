@@ -458,7 +458,7 @@
 
   <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
 
-  <script>
+<script>
     var EVENT = {
       title: "신지연·신동윤 결혼식",
       startISO: "20260523T183000",
@@ -468,6 +468,7 @@
     };
 
     document.addEventListener("DOMContentLoaded", function() {
+      // 1. 선택 박스 색상 제어
       document.getElementById("guestSide").addEventListener("change", function() {
         this.style.color = "#111";
       });
@@ -475,6 +476,37 @@
         this.style.color = "#111";
       });
 
+      // 2. 이름 입력 유효성 검사 (오직 완성된 한글만, 띄어쓰기 금지)
+      var nameInput = document.getElementById("name");
+      if (nameInput) {
+        nameInput.addEventListener("input", function(e) {
+          var start = this.selectionStart;
+          var end = this.selectionEnd;
+          var originalValue = this.value;
+          
+          this.value = this.value.replace(/[^가-힣]/g, "");
+          
+          if (originalValue !== this.value) {
+              this.setSelectionRange(start - 1, end - 1);
+          }
+        });
+      }
+
+      // 3. 전화번호 자동 하이픈
+      var phoneInput = document.getElementById("phone");
+      if (phoneInput) {
+        phoneInput.addEventListener("input", function(e) {
+          var val = e.target.value.replace(/[^0-9]/g, "");
+          var result = "";
+          if (val.length < 4) result = val;
+          else if (val.length < 7) result = val.substr(0, 3) + "-" + val.substr(3);
+          else if (val.length < 11) result = val.substr(0, 3) + "-" + val.substr(3, 3) + "-" + val.substr(6);
+          else result = val.substr(0, 3) + "-" + val.substr(3, 4) + "-" + val.substr(7);
+          e.target.value = result;
+        });
+      }
+
+      // 4. 스크롤 애니메이션 (Fade-in)
       var fadeEls = document.querySelectorAll(".fade-in");
       if (!("IntersectionObserver" in window)) {
         for (var i = 0; i < fadeEls.length; i++) {
@@ -482,68 +514,21 @@
         }
       } else {
         var observer = new IntersectionObserver(function(entries) {
-          for (var j = 0; j < entries.length; j++) {
-            if (entries[j].isIntersecting) {
-              entries[j].target.classList.add("visible");
-              observer.unobserve(entries[j].target);
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
             }
-          }
+          });
         }, { threshold: 0.1 });
 
-        for (var k = 0; k < fadeEls.length; k++) {
-          observer.observe(fadeEls[k]);
-        }
+        fadeEls.forEach(function(el) { observer.observe(el); });
       }
 
       initLinks();
     });
 
-    // 이름 입력 유효성 검사 (오직 완성된 한글만)
-    var nameInput = document.getElementById("name");
-    if (nameInput) {
-      nameInput.addEventListener("input", function(e) {
-        var start = this.selectionStart;
-        var end = this.selectionEnd;
-        var originalValue = this.value;
-        
-        // 한글 이외의 문자 제거
-        this.value = this.value.replace(/[^가-힣]/g, "");
-        
-        // 커서 위치 유지 (입력 도중 커서가 뒤로 튀는 현상 방지)
-        if (originalValue !== this.value) {
-            this.setSelectionRange(start - 1, end - 1);
-        }
-      });
-    }
-
-    // 전화번호 자동 하이픈
-    var phoneInput = document.getElementById("phone");
-    if (phoneInput) {
-      phoneInput.addEventListener("input", function(e) {
-        var val = e.target.value.replace(/[^0-9]/g, "");
-        var result = "";
-        if (val.length < 4) result = val;
-        else if (val.length < 7) result = val.substr(0, 3) + "-" + val.substr(3);
-        else if (val.length < 11) result = val.substr(0, 3) + "-" + val.substr(3, 3) + "-" + val.substr(6);
-        else result = val.substr(0, 3) + "-" + val.substr(3, 4) + "-" + val.substr(7);
-        e.target.value = result;
-      });
-    }
-
-  document.getElementById("name").addEventListener("input", function(e) {
-      // 띄어쓰기 조차 불가능! 오직 '완성된 한글(가~힣)'만 입력 가능
-      e.target.value = e.target.value.replace(/[^가-힣]/g, "");
-    });
-    document.getElementById("phone").addEventListener("input", function(e) {
-      var val = e.target.value.replace(/[^0-9]/g, "");
-      var result = "";
-      if (val.length < 4) result = val;
-      else if (val.length < 7) result = val.substr(0, 3) + "-" + val.substr(3);
-      else if (val.length < 11) result = val.substr(0, 3) + "-" + val.substr(3, 3) + "-" + val.substr(6);
-      else result = val.substr(0, 3) + "-" + val.substr(3, 4) + "-" + val.substr(7);
-      e.target.value = result;
-    });
-
+    // --- 이후 toast, copyToClipboard, submitRsvp 등의 함수는 그대로 두시면 됩니다 ---
     var toastTimer;
     function toast(msg) {
       var el = document.getElementById("toast");
