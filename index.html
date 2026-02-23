@@ -182,6 +182,15 @@
     
     footer { padding: 0 20px 80px; text-align: center; color: #aaa; font-size: 11px; letter-spacing: 3px; line-height: 1.8; background: var(--section-gray); }
 
+    /* 약도 확대 전용 하얀색 모달 설정 */
+    .map-white-modal {
+      --f-backdrop-color: rgba(255, 255, 255, 0.98) !important; /* 배경을 하얗게 */
+      --f-button-color: #222 !important; /* 닫기(X) 버튼을 검은색으로 */
+      --f-button-hover-color: #000 !important;
+      --f-button-bg: rgba(240, 240, 240, 0.5) !important; /* 닫기 버튼 배경을 살짝 회색으로 */
+    }
+
+    
     /* 토스트 */
     .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(45px + env(safe-area-inset-bottom)); background: rgba(30,30,30,0.95); color: #fff; padding: 15px 22px; border-radius: 30px; font-size: 14.5px; z-index: 3000; font-weight: 400; width: auto; max-width: calc(100vw - 40px); word-break: keep-all; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: -15px; }
     .toast.show { opacity: 1; margin-bottom: 0; }
@@ -621,12 +630,12 @@ function initLinks() {
       Images: { zoom: false } 
     });
 
-    // 2. 약도 전용 설정 (확대 기능 켜두기)
+  // 2. 약도 전용 설정 (확대 기능 켜두기 & 하얀색 배경 적용)
     Fancybox.bind('[data-fancybox="map"]', {
       Hash: false,
       Thumbs: false,
       Toolbar: { display: { left: [], middle: [], right: ["close"] } },
-      // 약도는 contentClick을 닫기가 아니라 확대(toggleZoom)로 두거나 기본값 유지
+      classes: { container: "map-white-modal" } // ✨ 이 한 줄이 추가됩니다!
     });
   </script>
 </body>
