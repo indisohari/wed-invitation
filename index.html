@@ -609,9 +609,20 @@ function initLinks() {
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <script>
-    // 갤러리, 약도 구분 없이 data-fancybox가 붙은 모든 이미지를 활성화
     Fancybox.bind('[data-fancybox]', {
-      Hash: false 
+      Hash: false,
+      Thumbs: false, // 하단에 깔리는 작은 미리보기 사진들 제거
+      Toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ["close"] // 상단에 복잡한 버튼 다 없애고 '닫기(X)' 버튼만 남김
+        }
+      },
+      contentClick: "close", // 확대된 사진을 한 번 터치하면 바로 닫히도록 설정
+      Images: {
+        zoom: false // 불필요한 더블클릭 줌 기능 끄기 (깔끔한 스와이프를 위해)
+      }
     });
   </script>
 </body>
