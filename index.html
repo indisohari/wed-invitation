@@ -607,10 +607,11 @@ function initLinks() {
     }
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <script>
-    Fancybox.bind('[data-fancybox="gallery"]', {
-      Hash: false // 뒤로가기 버튼 누를 때 꼬이는 현상 방지
+    // 갤러리, 약도 구분 없이 data-fancybox가 붙은 모든 이미지를 활성화
+    Fancybox.bind('[data-fancybox]', {
+      Hash: false 
     });
   </script>
 </body>
