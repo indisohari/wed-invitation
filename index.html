@@ -621,24 +621,23 @@ function initLinks() {
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <script>
-    // 1. 갤러리 전용 설정 (확대 없이 부드러운 스와이프 + 터치 시 닫기)
+    // 1. 갤러리 전용 설정 (오터치 방지 및 스와이프 최적화)
     Fancybox.bind('[data-fancybox="gallery"]', {
       Hash: false,
       Thumbs: false,
       Toolbar: { display: { left: [], middle: [], right: ["close"] } },
-      Images: { zoom: false }, // 더블클릭 확대 방지
-      contentClick: "close",   // ✨ 사진의 가운데를 터치하면 닫힘
-      backdropClick: "close"   // ✨ 사진 바깥(검은 배경)을 터치해도 닫힘
+      Images: { zoom: false }, // 더블클릭 확대 방지 (깔끔한 좌우 스와이프를 위해)
+      // 터치 시 닫힘(contentClick) 옵션은 오터치를 유발하므로 제외! 
+      // (기본값인 '아래로 스와이프 시 닫힘'이 가장 자연스럽게 작동합니다)
     });
 
-    // 2. 약도 전용 설정 (핀치 줌 확대 허용 + 하얀 배경 + 터치 시 닫기)
+    // 2. 약도 전용 설정 (확대 기능 켜두기 + 하얀 배경)
     Fancybox.bind('[data-fancybox="map"]', {
       Hash: false,
       Thumbs: false,
       Toolbar: { display: { left: [], middle: [], right: ["close"] } },
-      classes: { container: "map-white-modal" }, // 하얀색 배경 클래스 연결
-      contentClick: "close",   // ✨ 약도를 가볍게 한 번 터치하면 닫힘
-      backdropClick: "close"   // ✨ 약도 바깥(하얀 배경)을 터치해도 닫힘
+      classes: { container: "map-white-modal" } // 하얀색 배경 클래스 연결
+      // 약도는 기본 줌(Zoom) 기능이 활성화되어 두 손가락으로 자연스럽게 확대 가능합니다.
     });
   </script>
 </body>
