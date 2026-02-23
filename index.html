@@ -498,10 +498,10 @@
       initLinks();
     });
 
-    document.getElementById("name").addEventListener("input", function(e) {
-      e.target.value = e.target.value.replace(/[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z\s\-\.]/g, "");
+  document.getElementById("name").addEventListener("input", function(e) {
+      // 띄어쓰기 조차 불가능! 오직 '완성된 한글(가~힣)'만 입력 가능
+      e.target.value = e.target.value.replace(/[^가-힣]/g, "");
     });
-
     document.getElementById("phone").addEventListener("input", function(e) {
       var val = e.target.value.replace(/[^0-9]/g, "");
       var result = "";
