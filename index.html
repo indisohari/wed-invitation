@@ -20,107 +20,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <style>
-/* 8. CALENDAR SECTION (영문 캘리그라피 제거 버전) */
-    .calendar-section {
-      position: relative;
-      padding: 70px 25px 60px; /* 위아래 여백 살짝 조절 */
-      background: #fff;
-      overflow: hidden;
-      text-align: center;
-    }
-    
-    /* 배경 워터마크 "05" */
-    .watermark-05 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 280px; /* 영문이 빠져서 공간이 넓어졌으니 살짝 더 키웁니다 */
-      font-family: 'Nanum Myeongjo', serif;
-      color: rgba(0, 0, 0, 0.03); 
-      font-weight: 700;
-      z-index: 1;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    /* 달력 그리드 */
-    .calendar-wrapper {
-      position: relative;
-      z-index: 2;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-    
-    .cal-header {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-      margin-bottom: 20px;
-      font-size: 11.5px;
-      color: #888;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-    }
-    
-    .cal-header div:first-child { color: #b43a3a; } 
-    
-    .cal-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 10px 0; /* 세로 간격 살짝 넓힘 */
-      font-size: 15.5px;
-      color: #333;
-    }
-    
-    .cal-day {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    
-    .cal-day.empty { visibility: hidden; } 
-    .cal-day.sun, .cal-day.holiday { color: #b43a3a; } /* 일요일 및 공휴일 빨간색 */
-    
-    /* 23일 강조 포인트 */
-    .cal-day.d-day {
-      background-color: var(--accent);
-      color: #fff !important;
-      border-radius: 50%;
-      font-weight: 700;
-      box-shadow: 0 4px 10px rgba(140, 91, 91, 0.3);
-    }
-    
-    /* 달력 하단 텍스트 */
-    .cal-footer {
-      margin-top: 45px;
-      line-height: 1.5;
-    }
-    .cal-footer .d-date {
-      font-size: 19px;
-      font-weight: 700;
-      color: #111;
-      letter-spacing: 1px;
-    }
-    .cal-footer .d-time {
-      font-size: 16.5px;
-      font-weight: 500;
-      color: var(--accent);
-      display: inline-block;
-      margin-top: 4px;
-    }
-    .cal-extra-info {
-      margin-top: 25px;
-      font-size: 14.5px;
-      color: #555;
-      line-height: 1.6;
-      word-break: keep-all;
-    }
-    
-/* 위에서 여기까지가 버전 수정한 거 */
-    
     :root {
       --bg-color: #ffffff;
       --text-main: #1a1a1a;
@@ -147,7 +46,8 @@
 
     .wrap { max-width: 500px; margin: 0 auto; background: #fff; box-shadow: 0 0 40px rgba(0,0,0,0.05); min-height: 100vh; overflow: hidden; }
 
-    section { padding: 70px 25px; text-align: center; }
+    /* 전체 섹션 기본 여백 정돈 */
+    section { padding: 60px 25px; text-align: center; }
 
     .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 1.2s ease-out, transform 1.2s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -163,13 +63,12 @@
     .section-label-ko { font-size: 13.5px; color: #7a6b6b; letter-spacing: 1px; margin-bottom: 20px; display: block; font-weight: 500; }
 
     /* 1. HERO */
-    .hero { padding: 0 0 50px; background: #fff; }
+    .hero { padding: 0 0 40px; background: #fff; } /* 하단 여백 축소 */
     .hero-text-area { padding-top: 80px; padding-bottom: 40px; animation: fadeUpLoad 1.2s ease-out forwards; opacity: 0; }
     .date-text { font-size: 15px; letter-spacing: 4px; color: var(--accent); margin-bottom: 18px; font-weight: 700; }
 
     .names { font-size: 27px; margin-bottom: 12px; letter-spacing: 1px; line-height: 1.4; color: #111; font-weight: 400; }
 
-    /* 메인 사진은 확대 기능 제거 (보기 전용) */
     .main-photo-frame {
       width: 100%;
       margin: 0;
@@ -190,8 +89,113 @@
     .relation { color: #888; font-size: 12px; margin-left: 5px; }
     .me { font-weight: 700; font-size: 17.5px; color: #111; letter-spacing: 1px;}
 
-    /* 2 & 3. INFO & LOCATION */
-    .info-section { background: #fff; padding-top: 60px; padding-bottom: 50px; }
+    /* 8. CALENDAR SECTION */
+    .calendar-section {
+      position: relative;
+      padding: 40px 25px 40px; /* 상하 여백 최적화 */
+      background: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .calendar-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    /* 05 워터마크 완벽 정렬 및 사이즈 조절 */
+    .watermark-05 {
+      position: absolute;
+      top: 155px; /* 달력 숫자판의 완벽한 정중앙 위치 */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 190px; /* 달력 안에 예쁘게 쏙 들어가는 사이즈 */
+      font-family: 'Nanum Myeongjo', serif;
+      color: rgba(0, 0, 0, 0.035); 
+      font-weight: 700;
+      z-index: 1;
+      line-height: 1;
+      pointer-events: none;
+      letter-spacing: -6px; /* 숫자 간격을 예쁘게 조절 */
+    }
+
+    .cal-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 20px;
+      font-size: 11.5px;
+      color: #888;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cal-header div:first-child { color: #b43a3a; } 
+    
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px 0;
+      font-size: 15.5px;
+      color: #333;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cal-day {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    
+    .cal-day.empty { visibility: hidden; } 
+    .cal-day.sun, .cal-day.holiday { color: #b43a3a; } /* 일요일/공휴일 빨간색 */
+    
+    .cal-day.d-day {
+      background-color: var(--accent);
+      color: #fff !important;
+      border-radius: 50%;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(140, 91, 91, 0.3);
+    }
+    
+    .cal-footer {
+      margin-top: 45px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
+    }
+    .cal-footer .d-date {
+      font-size: 19px;
+      font-weight: 700;
+      color: #111;
+      letter-spacing: 1px;
+    }
+    .cal-footer .d-time {
+      font-size: 16.5px;
+      font-weight: 500;
+      color: var(--accent);
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .cal-extra-info {
+      margin-top: 25px;
+      font-size: 14.5px;
+      color: #555;
+      line-height: 1.6;
+      word-break: keep-all;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 2 & 3. INFO & LOCATION (여백 조절) */
+    .info-section { background: #fff; padding-top: 20px; padding-bottom: 50px; }
     .info-group { margin-bottom: 40px; }
     .info-title { font-size: 21px; font-weight: 700; margin-bottom: 12px; color: #111; letter-spacing: 0.5px; line-height: 1.4; }
     .info-desc { font-size: 15.5px; color: var(--text-sub); font-weight: 400; margin-bottom: 20px; line-height: 1.6; word-break: keep-all; }
@@ -203,7 +207,7 @@
 
     .divider-dot { width: 4px; height: 4px; background: #ccc; border-radius: 50%; margin: 30px auto 45px; }
 
-    .detail-info-section { background: #fff; padding-top: 30px; padding-bottom: 50px; }
+    .detail-info-section { background: #fff; padding-top: 10px; padding-bottom: 60px; }
     .map-img-wrap { margin-bottom: 40px; text-align: center; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #f0f0f0; }
 
     .detail-group { text-align: left; background: #fafafa; padding: 25px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #f2f2f2; }
@@ -248,7 +252,7 @@
     .privacy-notice { font-size: 12.5px; color: #888; margin-top: 20px; line-height: 1.5; text-align: center; word-break: keep-all; }
 
     /* 5. INVITATION */
-    .poem-section { padding-top: 60px; padding-bottom: 50px; background: #fff; }
+    .poem-section { padding-top: 70px; padding-bottom: 50px; background: #fff; }
     .poem-wrap {
       white-space: pre-line;
       line-height: 2.1;
@@ -261,7 +265,7 @@
     }
 
     /* 6. GALLERY */
-    .gallery-section { padding-top: 40px; padding-bottom: 60px; background: #fff; }
+    .gallery-section { padding-top: 30px; padding-bottom: 70px; background: #fff; }
     .gallery-section h2 { margin-bottom: 25px !important; }
     .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: 8px; overflow: hidden; }
     .gallery-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; cursor: zoom-in; display: block; transition: opacity 0.3s; }
@@ -294,37 +298,18 @@
 
     footer { padding: 0 20px 80px; text-align: center; color: #aaa; font-size: 11px; letter-spacing: 3px; line-height: 1.8; background: var(--section-gray); }
 
-/* 약도 확대 전용: 흰 배경 모달 */
-.map-white-modal {
-  --fancybox-bg: rgba(255, 255, 255, 0.98) !important;
-  --f-button-color: #222 !important;
-  --f-button-hover-color: #000 !important;
-  --f-button-bg: rgba(240, 240, 240, 0.7) !important;
-}
+    .map-white-modal {
+      --fancybox-bg: rgba(255, 255, 255, 0.98) !important;
+      --f-button-color: #222 !important;
+      --f-button-hover-color: #000 !important;
+      --f-button-bg: rgba(240, 240, 240, 0.7) !important;
+    }
 
-/* Fancybox v5 */
-.map-white-modal .fancybox__backdrop {
-  background: rgba(255, 255, 255, 0.98) !important;
-}
+    .map-white-modal .fancybox__backdrop { background: rgba(255, 255, 255, 0.98) !important; }
+    .map-white-modal .f-backdrop { background-color: rgba(255, 255, 255, 0.98) !important; }
+    .map-white-modal .f-button { color: #222 !important; background-color: rgba(240, 240, 240, 0.7) !important; }
+    .map-white-modal .fancybox__content, .map-white-modal .fancybox__slide { background: transparent !important; }
 
-/* 구버전 클래스 대응 (안전장치) */
-.map-white-modal .f-backdrop {
-  background-color: rgba(255, 255, 255, 0.98) !important;
-}
-
-/* 닫기 버튼 가독성 */
-.map-white-modal .f-button {
-  color: #222 !important;
-  background-color: rgba(240, 240, 240, 0.7) !important;
-}
-
-/* 이미지 주변 투명 처리 (배경은 backdrop의 흰색 사용) */
-.map-white-modal .fancybox__content,
-.map-white-modal .fancybox__slide {
-  background: transparent !important;
-}
-
-    /* 토스트 */
     .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(45px + env(safe-area-inset-bottom)); background: rgba(30,30,30,0.95); color: #fff; padding: 15px 22px; border-radius: 30px; font-size: 14.5px; z-index: 3000; font-weight: 400; width: auto; max-width: calc(100vw - 40px); word-break: keep-all; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); margin-bottom: -15px; }
     .toast.show { opacity: 1; margin-bottom: 0; }
 
@@ -352,10 +337,10 @@
       </div>
     </section>
     
-<section class="calendar-section fade-in">
-      <div class="watermark-05">05</div>
-
+    <section class="calendar-section fade-in">
       <div class="calendar-wrapper">
+        <div class="watermark-05">05</div>
+
         <div class="cal-header">
           <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
         </div>
@@ -388,7 +373,7 @@
           예식장 입장은 <b>오후 5시 45분</b>부터,<br>식사는 <b>오후 6시부터 8시</b>까지 하실 수 있습니다.
         </div>
         
-        <div style="margin-top: 25px;">
+        <div style="margin-top: 25px; position: relative; z-index: 2;">
           <a id="gcalLink" class="btn" target="_blank" rel="noopener noreferrer" style="max-width: 260px; margin: 0 auto;">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22C17.5 22 22 17.5 22 12C22 11.1 21.9 10.2 21.7 9.4H12V13.5H17.7C17.5 14.9 16.6 16.1 15.3 17C14.4 17.6 13.2 18 12 18C8.7 18 6 15.3 6 12C6 8.7 8.7 6 12 6C13.6 6 15 6.6 16.1 7.6L19 4.8C17.2 3.1 14.8 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"></path></svg>
             구글 캘린더 등록
@@ -397,8 +382,7 @@
       </div>
     </section>
 
-    
-    <section class="info-section fade-in" style="padding-top: 40px;">
+    <section class="info-section fade-in">
       <span class="section-label-ko">예식 장소</span>
       
       <div class="info-group" style="margin-bottom: 0;">
@@ -666,14 +650,16 @@
       var phoneInput = document.getElementById("phone");
       var rsvpForm = document.getElementById("rsvpForm");
       var shareBtn = document.getElementById("shareBtn");
-// 2) 성함 입력 시 공백 즉시 제거
-var nameInput = document.getElementById("name");
-if (nameInput) {
-  nameInput.addEventListener("input", function(e) {
-    var v = e.target.value;
-    e.target.value = v.replace(/\s+/g, "");
-  });
-}
+
+      // 2) 성함 입력 시 공백 즉시 제거
+      var nameInput = document.getElementById("name");
+      if (nameInput) {
+        nameInput.addEventListener("input", function(e) {
+          var v = e.target.value;
+          e.target.value = v.replace(/\s+/g, "");
+        });
+      }
+      
       // 1) select 색상
       if (guestSide) {
         guestSide.addEventListener("change", function() { this.style.color = "#111"; });
@@ -791,61 +777,59 @@ if (nameInput) {
     }
 
     // ===== RSVP 제출 =====
-  function submitRsvp() {
-  var sideSelect = document.getElementById("guestSide");
-  var side = sideSelect.value;
-  var name = document.getElementById("name").value.trim().replace(/\s+/g, ""); // 안전하게 공백 제거
-  var phone = document.getElementById("phone").value.trim();
-  var countSelect = document.getElementById("guestCount");
-  var count = countSelect.value;
-  var btn = document.getElementById("submitBtn");
+    function submitRsvp() {
+      var sideSelect = document.getElementById("guestSide");
+      var side = sideSelect.value;
+      var name = document.getElementById("name").value.trim().replace(/\s+/g, ""); 
+      var phone = document.getElementById("phone").value.trim();
+      var countSelect = document.getElementById("guestCount");
+      var count = countSelect.value;
+      var btn = document.getElementById("submitBtn");
 
-  var nameRegex = /^[가-힣]{2,20}$/;
-  var phoneRegex = /^01[016789]-\d{3,4}-\d{4}$/;
+      var nameRegex = /^[가-힣]{2,20}$/;
+      var phoneRegex = /^01[016789]-\d{3,4}-\d{4}$/;
 
-  if (!side) return toast("참석 구분을 선택해 주세요");
-  if (!name) return toast("성함을 입력해 주세요");
-  if (!nameRegex.test(name)) return toast("성함은 한글 2~20자, 띄어쓰기 없이 입력해 주세요");
-  if (!phoneRegex.test(phone)) return toast("연락처를 정확히 입력해 주세요");
-  if (!count) return toast("참석 인원을 선택해 주세요");
+      if (!side) return toast("참석 구분을 선택해 주세요");
+      if (!name) return toast("성함을 입력해 주세요");
+      if (!nameRegex.test(name)) return toast("성함은 한글 2~20자, 띄어쓰기 없이 입력해 주세요");
+      if (!phoneRegex.test(phone)) return toast("연락처를 정확히 입력해 주세요");
+      if (!count) return toast("참석 인원을 선택해 주세요");
 
-  btn.disabled = true;
-  btn.textContent = "전송 중...";
+      btn.disabled = true;
+      btn.textContent = "전송 중...";
 
-  var guestCountLabel = countSelect.options[countSelect.selectedIndex].text;
-  var scriptUrl = RSVP_ENDPOINT;
+      var guestCountLabel = countSelect.options[countSelect.selectedIndex].text;
+      var scriptUrl = RSVP_ENDPOINT;
 
-  fetch(scriptUrl, {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({
-      side: side,
-      name: name,
-      phone: phone,
-      guestCount: count,
-      guestCountLabel: guestCountLabel
-    })
-  })
-  .then(function() {
-    // no-cors에서는 신규/수정 여부를 프론트가 알 수 없으므로 중립 문구가 안전
-    toast("감사합니다! 참석 정보가 등록/수정되었습니다");
-
-    sideSelect.value = "";
-    sideSelect.style.color = "#aaa";
-    document.getElementById("name").value = "";
-    document.getElementById("phone").value = "";
-    countSelect.value = "";
-    countSelect.style.color = "#aaa";
-  })
-  .catch(function() {
-    alert("전송 중 문제가 발생했습니다. 나중에 다시 시도해 주세요.");
-  })
-  .finally(function() {
-    btn.disabled = false;
-    btn.textContent = "참석 정보 전달하기";
-  });
-}
+      fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          side: side,
+          name: name,
+          phone: phone,
+          guestCount: count,
+          guestCountLabel: guestCountLabel
+        })
+      })
+      .then(function() {
+        toast("감사합니다! 참석 정보가 등록/수정되었습니다");
+        sideSelect.value = "";
+        sideSelect.style.color = "#aaa";
+        document.getElementById("name").value = "";
+        document.getElementById("phone").value = "";
+        countSelect.value = "";
+        countSelect.style.color = "#aaa";
+      })
+      .catch(function() {
+        alert("전송 중 문제가 발생했습니다. 나중에 다시 시도해 주세요.");
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = "참석 정보 전달하기";
+      });
+    }
 
     // ===== 링크 초기화 =====
     function initLinks() {
@@ -874,30 +858,25 @@ if (nameInput) {
     });
 
     // 약도 (확대 허용)
- Fancybox.bind('[data-fancybox="map"]', {
-  Hash: false,
-  Thumbs: false,
-  Toolbar: { display: { left: [], middle: [], right: ["close"] } },
-  contentClick: "toggleZoom",
-  backdropClick: "close",
-  on: {
-    ready: function(fancybox) {
-      if (!fancybox || !fancybox.container) return;
-
-      // 컨테이너에 클래스 부여
-      fancybox.container.classList.add("map-white-modal");
-
-      // 버전별 백드롭 클래스 대응
-      var backdrop =
-        fancybox.container.querySelector(".fancybox__backdrop") ||
-        fancybox.container.querySelector(".f-backdrop");
-
-      if (backdrop) {
-        backdrop.style.background = "rgba(255,255,255,0.98)";
+    Fancybox.bind('[data-fancybox="map"]', {
+      Hash: false,
+      Thumbs: false,
+      Toolbar: { display: { left: [], middle: [], right: ["close"] } },
+      contentClick: "toggleZoom",
+      backdropClick: "close",
+      on: {
+        ready: function(fancybox) {
+          if (!fancybox || !fancybox.container) return;
+          fancybox.container.classList.add("map-white-modal");
+          var backdrop =
+            fancybox.container.querySelector(".fancybox__backdrop") ||
+            fancybox.container.querySelector(".f-backdrop");
+          if (backdrop) {
+            backdrop.style.background = "rgba(255,255,255,0.98)";
+          }
+        }
       }
-    }
-  }
-});
+    });
   </script>
 </body>
 </html>
