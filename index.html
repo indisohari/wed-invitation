@@ -82,7 +82,7 @@
     }
     
     .cal-day.empty { visibility: hidden; } 
-    .cal-day.sun { color: #b43a3a; } 
+    .cal-day.sun, .cal-day.holiday { color: #b43a3a; } /* 일요일 및 공휴일 빨간색 */
     
     /* 23일 강조 포인트 */
     .cal-day.d-day {
@@ -365,7 +365,7 @@
           <div class="cal-day empty"></div>
           
           <div class="cal-day">1</div><div class="cal-day">2</div>
-          <div class="cal-day sun">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day sun">3</div><div class="cal-day">4</div><div class="cal-day holiday">5</div>
           <div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
           <div class="cal-day sun">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
           <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div>
@@ -374,7 +374,7 @@
           
           <div class="cal-day d-day">23</div>
           
-          <div class="cal-day sun">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day sun">24</div><div class="cal-day holiday">25</div><div class="cal-day">26</div>
           <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
           <div class="cal-day sun">31</div>
         </div>
