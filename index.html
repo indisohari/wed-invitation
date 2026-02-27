@@ -109,11 +109,30 @@
       box-shadow: 0 4px 10px rgba(140, 91, 91, 0.3);
     }
     
+   /* 달력 하단 텍스트 가독성 극대화 */
     .cal-footer {
-      margin-top: 35px;
-      font-size: 15px;
-      color: #444;
+      margin-top: 40px;
+      line-height: 1.5;
+    }
+    .cal-footer .d-date {
+      font-size: 19px;
+      font-weight: 700;
+      color: #111;
       letter-spacing: 1px;
+    }
+    .cal-footer .d-time {
+      font-size: 16.5px;
+      font-weight: 500;
+      color: var(--accent);
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .cal-extra-info {
+      margin-top: 25px;
+      font-size: 14.5px;
+      color: #555;
+      line-height: 1.6;
+      word-break: keep-all;
     }
 
 /* 위에서 여기까지가 버전 수정한 거 */
@@ -378,25 +397,16 @@
           <div class="cal-day sun">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
           <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
           <div class="cal-day sun">31</div>
-        </div>
+   </div>
         
-        <div class="cal-footer font-serif">
-          2026. 05. 23 오후 6시 30분
-        </div>
-      </div>
-    </section>
-
-    /* 위에까지 업뎃 진행 */
-
-    
-    <section class="info-section fade-in">
-      <span class="section-label-ko">언제 · 어디서</span>
-      <div class="info-group">
-        <div class="info-title font-serif">2026. 05. 23. 토요일 <br> 오후 6시 30분</div>
-        <div class="info-desc">
-          예식장 입장은 오후 5시 45분부터,<br>식사는 오후 6시부터 8시까지 하실 수 있습니다.
+        <div class="cal-footer">
+          <div class="d-date">2026년 5월 23일 토요일</div>
+          <div class="d-time">오후 6시 30분</div>
         </div>
 
+        <div class="cal-extra-info">
+          예식장 입장은 <b>오후 5시 45분</b>부터,<br>식사는 <b>오후 6시부터 8시</b>까지 하실 수 있습니다.
+        </div>
         <div style="margin-top: 25px;">
           <a id="gcalLink" class="btn" target="_blank" rel="noopener noreferrer" style="max-width: 260px; margin: 0 auto;">
             <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22C17.5 22 22 17.5 22 12C22 11.1 21.9 10.2 21.7 9.4H12V13.5H17.7C17.5 14.9 16.6 16.1 15.3 17C14.4 17.6 13.2 18 12 18C8.7 18 6 15.3 6 12C6 8.7 8.7 6 12 6C13.6 6 15 6.6 16.1 7.6L19 4.8C17.2 3.1 14.8 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"></path></svg>
@@ -404,12 +414,13 @@
           </a>
         </div>
       </div>
-
-      <div class="divider-dot"></div>
-
+    </section>
+    <section class="info-section fade-in" style="padding-top: 40px;">
+      <span class="section-label-ko">예식 장소</span>
+      
       <div class="info-group" style="margin-bottom: 0;">
-        <div class="info-title font-serif">남산예술원 웨딩홀</div>
-        <div class="info-desc" style="margin-bottom: 18px;">
+        <div class="info-title font-serif" style="font-size: 23px;">남산예술원 웨딩홀</div>
+        <div class="info-desc" style="margin-bottom: 25px;">
           서울특별시 용산구 소월로 375 <span style="font-size: 0.92em; font-weight: 300; color: #888;">(한남동 726-157)</span>
         </div>
         <div class="btn-grid-3">
