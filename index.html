@@ -165,27 +165,46 @@
       box-shadow: 0 4px 10px rgba(140, 91, 91, 0.3);
     }
     
-    .cal-footer {
-      margin-top: 20px;
+ /* 달력 상단 날짜/시간 타이틀 (위로 이동) */
+    .cal-datetime {
+      margin-bottom: 25px; /* 달력 격자와의 간격 */
       line-height: 1.5;
       position: relative;
       z-index: 2;
     }
-    .cal-footer .d-date {
+    .cal-datetime .d-date {
       font-size: 19px;
       font-weight: 700;
       color: #111;
       letter-spacing: 1px;
     }
-    .cal-footer .d-time {
+    .cal-datetime .d-time {
       font-size: 16.5px;
       font-weight: 500;
       color: var(--accent);
       display: inline-block;
       margin-top: 4px;
     }
+
+    /* 05 워터마크 중앙 정렬 (자동 중앙 맞춤으로 변경) */
+    .watermark-05 {
+      position: absolute;
+      top: 48%; /* 텍스트와 달력 전체의 시각적 중앙으로 맞춤 */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 190px;
+      font-family: 'Nanum Myeongjo', serif;
+      color: rgba(0, 0, 0, 0.035); 
+      font-weight: 700;
+      z-index: 1;
+      line-height: 1;
+      pointer-events: none;
+      letter-spacing: -6px;
+    }
+
+    /* 입장/식사 안내 간격 조정 */
     .cal-extra-info {
-      margin-top: 25px;
+      margin-top: 35px; /* 달력 격자 아래 간격 */
       font-size: 14.5px;
       color: #555;
       line-height: 1.6;
@@ -337,9 +356,14 @@
       </div>
     </section>
     
-    <section class="calendar-section fade-in">
+<section class="calendar-section fade-in">
       <div class="calendar-wrapper">
         <div class="watermark-05">05</div>
+
+        <div class="cal-datetime">
+          <div class="d-date">2026년 5월 23일 토요일</div>
+          <div class="d-time">오후 6시 30분</div>
+        </div>
 
         <div class="cal-header">
           <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
@@ -364,11 +388,6 @@
           <div class="cal-day sun">31</div>
         </div>
         
-        <div class="cal-footer">
-          <div class="d-date">2026년 5월 23일 토요일</div>
-          <div class="d-time">오후 6시 30분</div>
-        </div>
-
         <div class="cal-extra-info">
           예식장 입장은 <b>오후 5시 45분</b>부터,<br>식사는 <b>오후 6시부터 8시</b>까지 하실 수 있습니다.
         </div>
@@ -381,7 +400,7 @@
         </div>
       </div>
     </section>
-
+    
     <section class="info-section fade-in">
       <span class="section-label-ko">예식 장소</span>
       
