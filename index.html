@@ -20,6 +20,104 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
   <style>
+/* 영문 필기체 폰트 불러오기 */
+    @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+    /* 8. CALENDAR SECTION (종이청첩장 3페이지 구현) */
+    .calendar-section {
+      position: relative;
+      padding: 80px 25px 70px;
+      background: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    /* 배경 워터마크 "05" */
+    .watermark-05 {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 260px;
+      font-family: 'Nanum Myeongjo', serif;
+      color: rgba(0, 0, 0, 0.03); /* 아주 연한 회색 */
+      font-weight: 700;
+      z-index: 1;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* We are getting married 필기체 */
+    .we-are-getting-married {
+      font-family: 'Alex Brush', cursive;
+      font-size: 46px;
+      color: #222;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 45px;
+      line-height: 1.1;
+      transform: rotate(-4deg); /* 종이청첩장처럼 살짝 기울임 */
+      letter-spacing: 1px;
+    }
+
+    /* 달력 그리드 */
+    .calendar-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    .cal-header {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      margin-bottom: 15px;
+      font-size: 11px;
+      color: #888;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    
+    .cal-header div:first-child { color: #b43a3a; } /* 일요일 빨간색 */
+    
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px 0;
+      font-size: 15px;
+      color: #333;
+    }
+    
+    .cal-day {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    
+    .cal-day.empty { visibility: hidden; } /* 빈 날짜 숨김 */
+    .cal-day.sun { color: #b43a3a; } /* 일요일 빨간색 */
+    
+    /* 23일 강조 포인트 */
+    .cal-day.d-day {
+      background-color: var(--accent);
+      color: #fff !important;
+      border-radius: 50%;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(140, 91, 91, 0.3);
+    }
+    
+    .cal-footer {
+      margin-top: 35px;
+      font-size: 15px;
+      color: #444;
+      letter-spacing: 1px;
+    }
+
+/* 위에서 여기까지가 버전 수정한 거 */
+    
     :root {
       --bg-color: #ffffff;
       --text-main: #1a1a1a;
@@ -251,6 +349,46 @@
       </div>
     </section>
 
+    /* 새롭게 추가 */
+    
+<section class="calendar-section fade-in">
+      <div class="watermark-05">05</div>
+
+      <div class="we-are-getting-married">
+        We are<br>getting married
+      </div>
+
+      <div class="calendar-wrapper">
+        <div class="cal-header">
+          <div>SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+        </div>
+        <div class="cal-grid">
+          <div class="cal-day empty"></div><div class="cal-day empty"></div>
+          <div class="cal-day empty"></div><div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          
+          <div class="cal-day">1</div><div class="cal-day">2</div>
+          <div class="cal-day sun">3</div><div class="cal-day">4</div><div class="cal-day">5</div>
+          <div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+          <div class="cal-day sun">10</div><div class="cal-day">11</div><div class="cal-day">12</div>
+          <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div>
+          <div class="cal-day sun">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
+          <div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div>
+          <div class="cal-day d-day">23</div>
+          <div class="cal-day sun">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+          <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
+          <div class="cal-day sun">31</div>
+        </div>
+        
+        <div class="cal-footer font-serif">
+          2026. 05. 23 오후 6시 30분
+        </div>
+      </div>
+    </section>
+
+    /* 위에까지 업뎃 진행 */
+
+    
     <section class="info-section fade-in">
       <span class="section-label-ko">언제 · 어디서</span>
       <div class="info-group">
