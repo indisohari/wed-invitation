@@ -471,7 +471,7 @@
       </div>
 
       <div style="display: none;">
-        <img src="10.jpg" data-fancybox="gallery">
+        <img src="10.jpg" data-fancybox="gallery" id="hiddenPhotoStart">
         <img src="11.jpg" data-fancybox="gallery">
         <img src="12.jpg" data-fancybox="gallery">
         <img src="13.jpg" data-fancybox="gallery">
@@ -480,7 +480,7 @@
       </div>
 
       <div style="text-align: center;">
-        <button type="button" class="btn-gallery-more" onclick="Fancybox.show([{src: '10.jpg', type: 'image'}, {src: '11.jpg', type: 'image'}, {src: '12.jpg', type: 'image'}, {src: '13.jpg', type: 'image'}, {src: '14.jpg', type: 'image'}, {src: '15.jpg', type: 'image'}]);">
+        <button type="button" class="btn-gallery-more" onclick="document.getElementById('hiddenPhotoStart').click();">
           더 많은 사진 보기
           <svg aria-hidden="true" viewBox="0 0 24 24" style="width: 14px; height: 14px; margin-left: 6px; stroke: #666; fill:none; stroke-width:2;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         </button>
