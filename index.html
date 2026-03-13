@@ -458,16 +458,24 @@
       <span class="section-label-ko" style="margin-bottom: 10px;">웨딩 사진...</span>
       <h2 class="font-serif" style="font-size: 23px; margin-bottom: 25px; font-weight: 700; color: #111; line-height: 1.4;">한 번은 해도,<br>두 번은 못할 촬영</h2>
 
-      <div class="gallery-grid">
-        <img src="1.jpg" alt="웨딩 사진 1" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="2.jpg" alt="웨딩 사진 2" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="3.jpg" alt="웨딩 사진 3" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="4.jpg" alt="웨딩 사진 4" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="5.jpg" alt="웨딩 사진 5" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="6.jpg" alt="웨딩 사진 6" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="7.jpg" alt="웨딩 사진 7" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="8.jpg" alt="웨딩 사진 8" data-fancybox="gallery" class="gallery-img" loading="lazy">
-        <img src="9.jpg" alt="웨딩 사진 9" data-fancybox="gallery" class="gallery-img" loading="lazy">
+    <div class="gallery-grid">
+        <img src="1.jpg" alt="웨딩 사진 1" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 65%;">
+        
+        <img src="2.jpg" alt="웨딩 사진 2" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 65%;">
+        
+        <img src="3.jpg" alt="웨딩 사진 3" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 25%;">
+        
+        <img src="4.jpg" alt="웨딩 사진 4" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 40%;">
+        
+        <img src="5.jpg" alt="웨딩 사진 5" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 75%;">
+        
+        <img src="6.jpg" alt="웨딩 사진 6" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 70%;">
+        
+        <img src="7.jpg" alt="웨딩 사진 7" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 65%;">
+        
+        <img src="8.jpg" alt="웨딩 사진 8" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 45%;">
+        
+        <img src="9.jpg" alt="웨딩 사진 9" data-fancybox="gallery" class="gallery-img" loading="lazy" style="object-position: center 85%;">
       </div>
 
       <div style="display: none;">
@@ -742,7 +750,7 @@ if (nameInput) {
     // 갤러리
     Fancybox.bind('[data-fancybox="gallery"]', {
       Hash: false,
-      Thumbs: {autostart: true},
+      Thumbs: {autoStart: true},
       Toolbar: { display: { left: [], middle: [], right: ["close"] } },
       Images: { zoom: false }
     });
